@@ -24,22 +24,22 @@ astro-erudite is an opinionated, unstyled static blogging template built with [A
 
 Below are some fantastic examples of websites based on this template. If you wish to add your site to this list, open a pull request!
 
-| Site                                          | Author                                             | Description/Features                                                                         | Source                                                 |
-| --------------------------------------------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| [enscribe.dev](https://enscribe.dev)          | [@jktrn](https://github.com/jktrn)                 | Heavily modified bento-style homepage with client interactivity, with custom MDX components! | [→](https://github.com/jktrn/enscribe.dev)             |
-| [emile.sh](https://emile.sh)                  | [@echoghi](https://github.com/echoghi)             | A minimalist personal blog using the [flexoki](https://stephango.com/flexoki) theme          | [→](https://github.com/echoghi/v5)                     |
-| [decentparadox.me](https://decentparadox.me)  | [@decentparadox](https://github.com/decentparadox) | A heavily customized personal portfolio with a sci-fi theme!                                 | [→](https://github.com/decentparadox/decentparadox.me) |
-| [flocto.github.io](https://flocto.github.io/) | [@flocto](https://github.com/flocto)               | A slightly modified personal blog                                                            | [→](https://github.com/flocto/flocto.github.io)        |
-| [dumbprism.me](https://www.dumbprism.me/)     | [@dumbprism](https://github.com/dumbprism)         | A customized portfolio inspired by enscribe's bento grid style adding my gist of UI          | [→](https://github.com/dumbprism/dumbprism-portfolio)  |
-| [hyuki.dev](https://hyuki.dev/)               | [@snow0406](https://github.com/snow0406)           | A minimalist blog with a blue color scheme, focusing on simplicity!                          | [→](https://github.com/Snow0406/hyuki.dev)             |
-| [ldd.cc](https://ldd.cc/)                     | [@xJoyLu](https://github.com/xjoylu)               | The cream of the idlers.                                                                     | [→](https://ldd.cc/)                                   |
-| [rezarezvan.com](https://rezarezvan.com/)     | [@rezaarezvan](https://github.com/rezaarezvan)     | A academic blog with personal touches :).                                                    | [→](https://rezarezvan.com/)                           |
-| [blog.z0x.ca](https://blog.z0x.ca/)           | [@z0x](https://z0x.ca)                             | _Very_ minimal version of erudite, stripping it down to the bare essentials                  | [→](https://git.z0x.ca/z0x/blog.z0x.ca/)               |
-| [angelaytchan.net](https://angelaytchan.net/)           | [@wispyplant](https://github.com/wispyplant)          | An artist portfolio and activities archive      | [→](https://github.com/wispyplant/wispyplant.github.io)               |
-| [kaezr.xyz](https://kaezr.xyz/)           | [@kaezrr](https://github.com/kaezrr)          | A minimal porfolio and blog website with slight tweaks to the original.      | [→](https://github.com/kaezrr/webfolio)               |
-| [worldwidewong](https://worldwidewong.vercel.app)           | [@brendanwong-web](https://github.com/brendanwong-web)          | A slightly funky portfolio, blog, and resume site with an added photo gallery.      | [→](https://github.com/brendanwong-web/worldwidewong)               |
-| [bgajjala.dev](https://bgajjala.dev)           | [@bgajjala8](https://github.com/bgajjala8)          | A minimal blog featuring a paper-color inspired color scheme      | [→](https://github.com/bgajjala8/bgajjala.dev)               |
-| [ankitz007.vercel.app](https://ankitz007.vercel.app) | [@ankitz007](https://github.com/ankitz007)          | A personal blog with a few modifications and updates to the original.      | [→](https://github.com/ankitz007/webfolio)               |
+| Site                                                 | Author                                                 | Description/Features                                                                         | Source                                                  |
+| ---------------------------------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| [enscribe.dev](https://enscribe.dev)                 | [@jktrn](https://github.com/jktrn)                     | Heavily modified bento-style homepage with client interactivity, with custom MDX components! | [→](https://github.com/jktrn/enscribe.dev)              |
+| [emile.sh](https://emile.sh)                         | [@echoghi](https://github.com/echoghi)                 | A minimalist personal blog using the [flexoki](https://stephango.com/flexoki) theme          | [→](https://github.com/echoghi/v5)                      |
+| [decentparadox.me](https://decentparadox.me)         | [@decentparadox](https://github.com/decentparadox)     | A heavily customized personal portfolio with a sci-fi theme!                                 | [→](https://github.com/decentparadox/decentparadox.me)  |
+| [flocto.github.io](https://flocto.github.io/)        | [@flocto](https://github.com/flocto)                   | A slightly modified personal blog                                                            | [→](https://github.com/flocto/flocto.github.io)         |
+| [dumbprism.me](https://www.dumbprism.me/)            | [@dumbprism](https://github.com/dumbprism)             | A customized portfolio inspired by enscribe's bento grid style adding my gist of UI          | [→](https://github.com/dumbprism/dumbprism-portfolio)   |
+| [hyuki.dev](https://hyuki.dev/)                      | [@snow0406](https://github.com/snow0406)               | A minimalist blog with a blue color scheme, focusing on simplicity!                          | [→](https://github.com/Snow0406/hyuki.dev)              |
+| [ldd.cc](https://ldd.cc/)                            | [@xJoyLu](https://github.com/xjoylu)                   | The cream of the idlers.                                                                     | [→](https://ldd.cc/)                                    |
+| [rezarezvan.com](https://rezarezvan.com/)            | [@rezaarezvan](https://github.com/rezaarezvan)         | A academic blog with personal touches :).                                                    | [→](https://rezarezvan.com/)                            |
+| [blog.z0x.ca](https://blog.z0x.ca/)                  | [@z0x](https://z0x.ca)                                 | _Very_ minimal version of erudite, stripping it down to the bare essentials                  | [→](https://git.z0x.ca/z0x/blog.z0x.ca/)                |
+| [angelaytchan.net](https://angelaytchan.net/)        | [@wispyplant](https://github.com/wispyplant)           | An artist portfolio and activities archive                                                   | [→](https://github.com/wispyplant/wispyplant.github.io) |
+| [kaezr.xyz](https://kaezr.xyz/)                      | [@kaezrr](https://github.com/kaezrr)                   | A minimal porfolio and blog website with slight tweaks to the original.                      | [→](https://github.com/kaezrr/webfolio)                 |
+| [worldwidewong](https://worldwidewong.vercel.app)    | [@brendanwong-web](https://github.com/brendanwong-web) | A slightly funky portfolio, blog, and resume site with an added photo gallery.               | [→](https://github.com/brendanwong-web/worldwidewong)   |
+| [bgajjala.dev](https://bgajjala.dev)                 | [@bgajjala8](https://github.com/bgajjala8)             | A minimal blog featuring a paper-color inspired color scheme                                 | [→](https://github.com/bgajjala8/bgajjala.dev)          |
+| [ankitz007.vercel.app](https://ankitz007.vercel.app) | [@ankitz007](https://github.com/ankitz007)             | A personal blog with a few modifications and updates to the original.                        | [→](https://github.com/ankitz007/webfolio)              |
 
 ## Features
 
@@ -50,7 +50,6 @@ Below are some fantastic examples of websites based on this template. If you wis
 - Astro [View Transitions](https://docs.astro.build/en/guides/view-transitions/) in <abbr title="Single Page Application">SPA</abbr> mode for smooth route animations.
 - SEO optimization with granular metadata and [Open Graph](https://ogp.me/) tag control for each post.
 - [RSS](https://en.wikipedia.org/wiki/RSS) feed and sitemap generation.
-- Subpost support for breaking long content into digestible parts and organizing related series.
 - Author profiles with a dedicated authors page and multi-author post support.
 - Project tags with a dedicated tags page for post categorization and discovery.
 - Custom Callout component variants for enhanced technical writing.
@@ -216,7 +215,6 @@ pronouns: 'he/him'
 avatar: 'https://gravatar.com/avatar/9bfdc4ec972793cf05cb91efce5f4aaaec2a0da1bf4ec34dad0913f1d845faf6.webp?size=256'
 bio: 'd(-_-)b'
 website: 'https://enscribe.dev'
-twitter: 'https://twitter.com/enscry'
 github: 'https://github.com/jktrn'
 mail: 'jason@enscribe.dev'
 ---
