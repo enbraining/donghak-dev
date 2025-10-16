@@ -1,4 +1,4 @@
-import { getCollection, render, type CollectionEntry } from 'astro:content'
+import { getCollection, type CollectionEntry } from 'astro:content'
 import { readingTime, calculateWordCountFromHtml } from '@/lib/utils'
 
 export async function getAllPosts(): Promise<CollectionEntry<'blog'>[]> {
@@ -99,36 +99,4 @@ export async function getPostReadingTime(postId: string): Promise<string> {
 
   const wordCount = calculateWordCountFromHtml(post.body)
   return readingTime(wordCount)
-}
-
-export type TOCHeading = {
-  slug: string
-  text: string
-  depth: number
-}
-
-export type TOCSection = {
-  title: string
-  headings: TOCHeading[]
-}
-
-export async function getTOCSections(postId: string): Promise<TOCSection[]> {
-  const post = await getPostById(postId)
-  if (!post) return []
-
-  const sections: TOCSection[] = []
-
-  const { headings } = await render(post)
-  if (headings.length > 0) {
-    sections.push({
-      title: 'Overview',
-      headings: headings.map((heading) => ({
-        slug: heading.slug,
-        text: heading.text,
-        depth: heading.depth,
-      })),
-    })
-  }
-
-  return sections
 }

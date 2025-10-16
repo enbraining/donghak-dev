@@ -12,45 +12,29 @@ const blog = await getRecentPosts(SITE.featuredPostCount)
 
 <Layout class="max-w-3xl">
   <PageHead slot="head" title="Home" />
-  <section class="rounded-lg border">
-    <div class="flex flex-col space-y-1.5 p-6">
-      <h3 class="text-3xl leading-none font-medium">Kim Donghak</h3>
-      <p class="text-muted-foreground text-sm">
-        Software &bull; Cloud Engineer
-      </p>
-    </div>
-    <div class="p-6 pt-0">
-      <p class="text-muted-foreground text-sm">
-        광주소프트웨어마이스터고등학교 3학년 재학중입니다. <Link
-          href="https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=2290"
-          class="text-foreground"
-          external
-          underline>정보처리산업기사</Link
-        >, <Link
-          href="https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=2170"
-          class="text-foreground"
-          external
-          underline>전자산업기사</Link
-        >, <Link
-          href="https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=7780"
-          class="text-foreground"
-          external
-          underline>전기기능사</Link
-        > 취득하였습니다.
-      </p>
-      <p class="text-muted-foreground mb-2 text-sm">
-        Next.js, Spring Framework 등을 이용한 풀스택 개발과 AWS, NCP 등의
-        클라우드 구축 경험이 있습니다.
-      </p>
-      <p class="text-muted-foreground text-sm">
-        고대 그리스의 아리스토텔레스처럼 다양한 분야의 경험을 바탕으로 지혜로운
-        삶을 추구하며 발전하고 싶습니다.
-      </p>
-      <p class="text-muted-foreground mb-2 text-sm">
-        모스 부호를 포함한 아마추어 무선통신에 관심이 많으며, 6년 가까이되는
-        가야금 연주 경험과 일렉 기타 연주를 취미로 즐기고 있습니다.
-      </p>
-    </div>
+  <section class="space-y-1">
+    <p class="text-muted-foreground text-sm">
+      <Link
+        href="https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=2290"
+        class="text-foreground"
+        external
+        underline>정보처리산업기사</Link
+      >, <Link
+        href="https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=2170"
+        class="text-foreground"
+        external
+        underline>전자산업기사</Link
+      >, <Link
+        href="https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=7780"
+        class="text-foreground"
+        external
+        underline>전기기능사</Link
+      > 취득하였습니다.
+    </p>
+    <p class="text-muted-foreground mb-2 text-sm">
+      Next.js, Spring Framework 등을 이용한 풀스택 개발과 AWS, NCP 등의 클라우드
+      구축 경험이 있습니다.
+    </p>
   </section>
   <section class="flex flex-col gap-y-4">
     <h2 class="text-2xl font-medium">Latest posts</h2>

@@ -1,7 +1,7 @@
 import type { IconMap, SocialLink, Site } from '@/types'
 
 export const SITE: Site = {
-  title: '🛠️ donghak.dev',
+  title: 'DONGHAK>DEV',
   description:
     '다양한 기술과 도구를 활용하여 문제를 해결한 사례를 공유하는 블로그입니다.',
   href: 'https://donghak.dev',

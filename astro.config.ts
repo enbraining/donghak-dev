@@ -22,9 +22,8 @@ export default defineConfig({
   site: 'https://donghak.dev',
   integrations: [
     expressiveCode({
-      themes: ['github-light', 'github-dark'],
+      themes: ['github-light'],
       plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
-      useDarkModeMediaQuery: false,
       themeCssSelector: (theme) => `[data-theme="${theme.name.split('-')[1]}"]`,
       defaultProps: {
         wrap: true,
@@ -94,7 +93,6 @@ export default defineConfig({
         {
           theme: {
             light: 'github-light',
-            dark: 'github-dark',
           },
         },
       ],
