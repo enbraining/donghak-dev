@@ -13,8 +13,16 @@ export const SITE: Site = {
 
 export const NAV_LINKS: SocialLink[] = [
   {
+    href: '/',
+    label: '홈',
+  },
+  {
     href: '/blog',
-    label: 'blog',
+    label: '블로그',
+  },
+  {
+    href: '/tags',
+    label: '카테고리',
   },
 ]
 
