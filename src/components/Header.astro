@@ -14,7 +14,7 @@ const currentPath = Astro.url.pathname
       </p>
     </Link>
 
-    <div class="mt-4 grid grid-flow-col border text-sm">
+    <div class="mt-4 grid grid-flow-row border text-sm sm:grid-flow-col">
       {
         NAV_LINKS.map((item) => {
           const isActive =
