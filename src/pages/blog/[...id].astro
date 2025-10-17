@@ -74,17 +74,15 @@ const combinedReadingTime = await getCombinedReadingTime(currentPostId)
         </div>
         <div class="flex flex-wrap justify-center gap-2">
           {
-            post.data.tags &&
-              post.data.tags.length > 0 &&
-              post.data.tags.map((tag) => (
-                <a
-                  href={`/tags/${tag}`}
-                  class={badgeVariants({ variant: 'muted' })}
-                >
-                  <Icon name="lucide:hash" class="size-3" />
-                  {tag}
-                </a>
-              ))
+            post.data?.category && (
+              <a
+                href={`/tags/${post.data?.category}`}
+                class={badgeVariants({ variant: 'muted' })}
+              >
+                <Icon name="lucide:hash" class="size-3" />
+                {post.data?.category}
+              </a>
+            )
           }
         </div>
       </div>

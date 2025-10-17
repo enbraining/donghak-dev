@@ -11,9 +11,10 @@ export async function getAllPosts(): Promise<CollectionEntry<'blog'>[]> {
 export async function getAllTags(): Promise<Map<string, number>> {
   const posts = await getAllPosts()
   return posts.reduce((acc, post) => {
-    post.data.tags?.forEach((tag) => {
-      acc.set(tag, (acc.get(tag) || 0) + 1)
-    })
+    acc.set(
+      post.data.category || 'Uncategorized',
+      (acc.get(post.data.category || 'Uncategorized') || 0) + 1,
+    )
     return acc
   }, new Map<string, number>())
 }
@@ -38,11 +39,11 @@ export async function getAdjacentPosts(currentId: string): Promise<{
   }
 }
 
-export async function getPostsByTag(
-  tag: string,
+export async function getPostsByCategory(
+  category: string,
 ): Promise<CollectionEntry<'blog'>[]> {
   const posts = await getAllPosts()
-  return posts.filter((post) => post.data.tags?.includes(tag))
+  return posts.filter((post) => post.data.category === category)
 }
 
 export async function getRecentPosts(

@@ -2,7 +2,7 @@
 import BlogCard from '@/components/BlogCard.astro'
 import PageHead from '@/components/PageHead.astro'
 import Layout from '@/layouts/Layout.astro'
-import { getAllTags, getPostsByTag } from '@/lib/data-utils'
+import { getAllTags, getPostsByCategory } from '@/lib/data-utils'
 
 export async function getStaticPaths() {
   const tagMap = await getAllTags()
@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 
   return Promise.all(
     uniqueTags.map(async (tag) => {
-      const posts = await getPostsByTag(tag)
+      const posts = await getPostsByCategory(tag)
       return {
         params: { id: tag },
         props: {

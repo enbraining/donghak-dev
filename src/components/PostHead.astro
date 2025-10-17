@@ -34,8 +34,7 @@ const image = new URL('/static/1200x630.png', Astro.site)
 <meta name="twitter:card" content="summary_large_image" />
 
 {
-  post?.data.tags &&
-    post.data.tags.map((tag: string) => {
-      return <meta property="article:tag" content={tag} />
-    })
+  post?.data?.category && (
+    <meta property="article:section" content={post.data?.category} />
+  )
 }
