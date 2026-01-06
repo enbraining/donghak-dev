@@ -6,7 +6,10 @@ export default function Home() {
     <div>
       <p>블로그 공사 예정</p>
 
-      <div className="my-12">
+      <section className="grid grid-cols-2">
+        <div>
+        <div className="my-12">
+        <p>2025년 11월 21일 ~ 으뜸정보기술 재직 중</p>
         <p>2026년 1월 7일 광주소프트웨어마이스터고등학교 졸업</p>
       </div>
 
@@ -25,6 +28,19 @@ export default function Home() {
         <p>gRPC, WebSocket, TCP 등 다양한 프로토콜 사용 경험</p>
         <p>클라우드 아키텍쳐 설계 경험</p>
       </div>
+      </div>
+
+      <div>
+        <div className="my-12">
+        <p>마인크래프트 플러그인 개발</p>
+        <p>아마추어 무선</p>
+        <p>일렉트릭 기타</p>
+        <p>음원 믹싱</p>
+      </div>
+      </div>
+      </section>
+
+
 
       {allPosts.map(post => <Link key={post._meta.fileName} href={post._meta.fileName}>{post.title}</Link>)}
     </div>
