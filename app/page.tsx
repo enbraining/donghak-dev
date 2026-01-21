@@ -7,8 +7,10 @@ export default function Home() {
       <header className="mb-16">
         <h1 className="text-4xl font-bold mb-2">Donghak Kim</h1>
         <p className="text-lg text-gray-500 dark:text-gray-400">
-          소프트웨어 엔지니어
+          UX Engineer
         </p>
+
+        <p className="mt-8">보통 사용자가 없는 것을 서비스라고 하진 않습니다. 대부분의 것들은 제공하는 사람과 제공받는 사람의 이해 관계로 엮어져있고, 저는 그 사이에서 심리학과 소프트웨어 공학을 통해 유연한 상호작용을 만들어냅니다.</p>
       </header>
 
       <section className="grid md:grid-cols-2 gap-12 mb-16">
@@ -20,11 +22,15 @@ export default function Home() {
             <ul className="space-y-2 text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-2">
                 <span className="text-gray-400">•</span>
-                <span>2025.11 ~ 으뜸정보기술 재직 중</span>
+                <span>2025.11 ~ 현재 으뜸정보기술 재직 중</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-gray-400">•</span>
-                <span>2026.01 광주소프트웨어마이스터고등학교 졸업</span>
+                <span>~ 2026.01 광주소프트웨어마이스터고등학교 스마트IoT과 졸업</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span>2026.01 ~ 현재 서울사이버대학교 심리학과 재학</span>
               </li>
             </ul>
           </div>
