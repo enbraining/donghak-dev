@@ -22,7 +22,7 @@ export default function Home() {
             <ul className="space-y-2 text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-2">
                 <span className="text-gray-400">•</span>
-                <span>2025.11 ~ 현재 으뜸정보기술 재직 중</span>
+                <span>2025.11 ~ 현재 으뜸정보기술 재직 중 (솔루션 아키텍트)</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-gray-400">•</span>
