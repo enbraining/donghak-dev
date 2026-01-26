@@ -1,14 +1,13 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { z } from "zod";
 import { compileMDX } from "@content-collections/mdx";
- 
+
 const posts = defineCollection({
   name: "posts",
   directory: "app/content",
   include: "**/*.mdx",
   schema: z.object({
     title: z.string(),
-    summary: z.string(),
     category: z.string(),
     date: z.string(),
   }),
@@ -20,7 +19,7 @@ const posts = defineCollection({
     };
   },
 });
- 
+
 export default defineConfig({
   collections: [posts],
 });
