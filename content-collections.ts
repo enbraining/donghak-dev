@@ -1,6 +1,7 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { z } from "zod";
 import { compileMDX } from "@content-collections/mdx";
+import rehypePrettyCode from "rehype-pretty-code";
 
 const posts = defineCollection({
   name: "posts",
@@ -12,7 +13,17 @@ const posts = defineCollection({
     date: z.string(),
   }),
   transform: async (document, context) => {
-    const mdx = await compileMDX(context, document);
+    const mdx = await compileMDX(context, document, {
+      rehypePlugins: [
+        [
+          rehypePrettyCode,
+          {
+            theme: "github-dark",
+            keepBackground: true,
+          },
+        ],
+      ],
+    });
     return {
       ...document,
       mdx,
