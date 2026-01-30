@@ -6,13 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "new": "node scripts/new-post.mjs"
   },
   "dependencies": {
+    "openai": "^4.77.0",
+    "@shikijs/transformers": "^3.21.0",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "rehype-pretty-code": "^0.14.1",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
     "shiki": "^3.21.0"
   },
   "devDependencies": {

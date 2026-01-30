@@ -1,7 +1,7 @@
 ---
-title: "KT Cloud 이해하기"
+title: "KT 클라우드 리전별 차이"
 category: "클라우드"
-date: "2026-01-26"
+date: "2026-01-30"
 ---
 
 # KT Cloud Zone
@@ -19,3 +19,11 @@ KT Cloud는 4개의 데이터센터와 12개의 서비스 존으로 구성됩니
 - Enterprise Zone: 천안에 위치한 보안에 특화된 기업용 Zone
 - G-Cloud Zone: 천안에 위치한 보안에 특화된 공공기관 전용 Zone
 - Enterprise Security Zone: 목동에 위치한 보안 특화 Zone
+
+# VR(Virtual Router)
+
+KT Cloud 내부에 있는 VM과 외부와의 통신을 중개합니다.
+
+- NAT: 사설망과 공인망을 중개
+- 방화벽: Inbound 트래픽에 대한 Source IP/Port를 허용
+- DHCP: KT Cloud 내부에 VM 생성 시 사설 IP 주소 부여
