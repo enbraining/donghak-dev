@@ -1,0 +1,51 @@
+---
+title: "윈도우에서 Containerd 설치하기"
+category: "컨테이너"
+date: "2026-01-31"
+---
+
+> 모든 작업은 관리자 권한으로 진행해주세요.
+
+# Containerd 설치
+
+Kubernetes는 내부적으로 컨테이너 런타임을 사용합니다.
+이번 글에서는 컨테이너 런타임 중 하나인 Containerd를 설치해보겠습니다.
+
+[Containerd 윈도우 설치하기](https://github.com/containerd/containerd/blob/main/docs/getting-started.md#installing-containerd-on-windows)
+
+설명에 따르면 Windows Service Manager를 사용할 경우 Containerd의 로그가 영구 저장되지 않기 때문에 NSSM의 사용을 추천하고 있습니다. 이것도 추가로 설치 진행하겠습니다.
+
+## NSSM 설치
+
+아래의 링크를 통해서 NSSM을 설치하고 `C:\nssm`과 같은 경로를 만들어 nssm.exe 파일을 넣어두면 됩니다.
+
+[NSSM 설치하기](https://nssm.cc/download)
+
+그리고 아래의 명령어를 실행하여 %PATH% 환경 변수에도 등록해줍니다.
+
+```powershell
+$oldPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
+$newPath = $oldPath + ";C:\nssm"
+[System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
+```
+
+> 터미널을 다시 열어야 적용됩니다.
+
+## NSSM으로 Containerd 서비스 등록하기
+
+맨 처음에 사용한 Containerd 기본 스크립트는 Windows Service Manager를 이용하는 방식으로 구성되어 있기 때문에,
+서비스 등록을 해제해주고 NSSM에 서비스를 등록해주겠습니다.
+
+```powershell
+containerd.exe --unregister-Service
+nssm.exe install containerd
+nssm.exe set containerd AppStdout "\containerd.log"
+nssm.exe set containerd AppStderr "\containerd.err.log"
+nssm.exe start containerd
+# to stop:
+nssm.exe stop containerd
+
+$oldPath = [Environment]::GetEnvironmentVariable("Path", "Machine")
+$newPath = $oldPath + ";C:\Program Files\containerd"
+[Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
+```

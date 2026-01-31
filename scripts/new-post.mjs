@@ -54,7 +54,7 @@ const getToday = () => {
   return `${year}-${month}-${day}`;
 };
 
-async function translateToEnglish(koreanText) {
+async function analyzeTitle(koreanText) {
   if (!openai) {
     console.log("⚠️  OPENAI_API_KEY가 설정되지 않았습니다.");
     return null;
@@ -66,25 +66,46 @@ async function translateToEnglish(koreanText) {
       messages: [
         {
           role: "user",
-          content: `Translate this Korean blog post title to English. Return ONLY the translated title in lowercase, suitable for a URL slug (use hyphens instead of spaces, no special characters). Keep it concise.
+          content: `Analyze this Korean blog post title and return a JSON object with:
+1. "folder": broad topic category in English lowercase (e.g., "kubernetes", "react", "essay", "poetry"). Use null if it's a standalone post.
+2. "slug": English filename slug (lowercase, hyphens, no special chars)
+
+Return ONLY valid JSON, no markdown or explanation.
 
 Korean title: "${koreanText}"
 
-English slug:`,
+JSON:`,
         },
       ],
     });
 
-    const translated = response.choices[0]?.message?.content?.trim();
+    const content = response.choices[0]?.message?.content?.trim();
 
-    if (translated) {
-      return slugify(translated);
+    // JSON 파싱 시도
+    const jsonMatch = content.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      const parsed = JSON.parse(jsonMatch[0]);
+      return {
+        folder: parsed.folder ? slugify(parsed.folder) : null,
+        slug: parsed.slug ? slugify(parsed.slug) : null,
+      };
     }
   } catch (error) {
-    console.log("⚠️  번역 실패:", error.message);
+    console.log("⚠️  분석 실패:", error.message);
   }
 
   return null;
+}
+
+function getNextNumber(folderPath) {
+  if (!fs.existsSync(folderPath)) return 1;
+
+  const files = fs.readdirSync(folderPath).filter(f => f.endsWith(".mdx"));
+  const numbers = files
+    .map(f => parseInt(f.match(/^(\d+)-/)?.[1] || "0"))
+    .filter(n => n > 0);
+
+  return numbers.length > 0 ? Math.max(...numbers) + 1 : 1;
 }
 
 async function main() {
@@ -97,19 +118,59 @@ async function main() {
     return;
   }
 
-  console.log("🔄 파일명 생성 중...");
-  let slug = await translateToEnglish(title);
+  console.log("🔄 분석 중...");
+  const analysis = await analyzeTitle(title);
 
+  let folder = null;
+  let slug = null;
+
+  if (analysis) {
+    // 폴더 제안
+    if (analysis.folder) {
+      console.log(`📁 추천 폴더: ${analysis.folder}`);
+      const folderConfirm = await question("폴더에 저장할까요? (Y/n/직접입력): ");
+
+      if (folderConfirm.toLowerCase() === "n") {
+        folder = null;
+      } else if (folderConfirm.toLowerCase() === "y" || folderConfirm === "") {
+        folder = analysis.folder;
+      } else {
+        folder = slugify(folderConfirm);
+      }
+    } else {
+      const useFolder = await question("폴더에 저장할까요? (폴더명 입력 또는 Enter로 건너뛰기): ");
+      if (useFolder.trim()) {
+        folder = slugify(useFolder);
+      }
+    }
+
+    // 파일명 제안
+    if (analysis.slug) {
+      let suggestedSlug = analysis.slug;
+
+      // 폴더 사용 시 번호 붙이기
+      if (folder) {
+        const folderPath = path.join(process.cwd(), "app", "content", folder);
+        const nextNum = getNextNumber(folderPath);
+        suggestedSlug = `${nextNum}-${analysis.slug}`;
+      }
+
+      console.log(`💡 추천 파일명: ${suggestedSlug}`);
+      const slugConfirm = await question("사용할까요? (Y/n): ");
+
+      if (slugConfirm.toLowerCase() === "n") {
+        const manualSlug = await question("파일명 (영문): ");
+        slug = slugify(manualSlug);
+      } else {
+        slug = suggestedSlug;
+      }
+    }
+  }
+
+  // 수동 입력 폴백
   if (!slug) {
     const manualSlug = await question("파일명 (영문): ");
     slug = slugify(manualSlug);
-  } else {
-    console.log(`💡 생성된 파일명: ${slug}`);
-    const confirm = await question("사용할까요? (Y/n): ");
-    if (confirm.toLowerCase() === "n") {
-      const manualSlug = await question("파일명 (영문): ");
-      slug = slugify(manualSlug);
-    }
   }
 
   if (!slug) {
@@ -136,10 +197,20 @@ async function main() {
 
   const date = getToday();
   const fileName = `${slug}.mdx`;
-  const filePath = path.join(process.cwd(), "app", "content", fileName);
+
+  // 경로 설정
+  const contentDir = path.join(process.cwd(), "app", "content");
+  const targetDir = folder ? path.join(contentDir, folder) : contentDir;
+  const filePath = path.join(targetDir, fileName);
+  const relativePath = folder ? `app/content/${folder}/${fileName}` : `app/content/${fileName}`;
+
+  // 폴더 생성
+  if (folder && !fs.existsSync(targetDir)) {
+    fs.mkdirSync(targetDir, { recursive: true });
+  }
 
   if (fs.existsSync(filePath)) {
-    console.log(`❌ 이미 존재하는 파일입니다: ${fileName}`);
+    console.log(`❌ 이미 존재하는 파일입니다: ${relativePath}`);
     rl.close();
     return;
   }
@@ -170,9 +241,10 @@ date: "${date}"`;
 
   fs.writeFileSync(filePath, frontmatter, "utf-8");
 
-  console.log(`\n✅ 생성 완료: app/content/${fileName}`);
+  console.log(`\n✅ 생성 완료: ${relativePath}`);
   console.log(`📅 날짜: ${date}`);
   console.log(`🏷️  카테고리: ${category}`);
+  if (folder) console.log(`📁 폴더: ${folder}`);
   if (tags.length > 0) console.log(`🔖 태그: ${tags.join(", ")}`);
   if (series) console.log(`📚 시리즈: ${series}`);
 
