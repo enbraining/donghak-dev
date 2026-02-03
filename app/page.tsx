@@ -13,8 +13,8 @@ export default function Home() {
     return Array.from(cats);
   }, []);
 
-  const filteredPosts = useMemo(() => {
-    return allPosts
+  const { essays, articles } = useMemo(() => {
+    const filtered = allPosts
       .filter((post) => {
         const matchesSearch =
           searchQuery === "" ||
@@ -25,6 +25,11 @@ export default function Home() {
         return matchesSearch && matchesCategory;
       })
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+    return {
+      essays: filtered.filter((post) => post.type === "essay"),
+      articles: filtered.filter((post) => post.type !== "essay"),
+    };
   }, [searchQuery, selectedCategory]);
 
   return (
@@ -72,41 +77,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Blog */}
-      <section>
-        <div className="flex items-baseline gap-4 mb-5">
-          <h2 className="text-gray-500">글</h2>
-          <input
-            type="text"
-            placeholder="검색"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-1 max-w-48 px-2 py-1 bg-transparent border-b border-gray-800 focus:outline-none focus:border-gray-600 text-white placeholder-gray-600"
-          />
-          {categories.length > 0 && (
-            <div className="flex gap-3 text-sm">
+      {/* Search & Filter */}
+      <div className="flex items-baseline gap-4 mb-8">
+        <input
+          type="text"
+          placeholder="검색"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="flex-1 max-w-48 px-2 py-1 bg-transparent border-b border-gray-800 focus:outline-none focus:border-gray-600 text-white placeholder-gray-600"
+        />
+        {categories.length > 0 && (
+          <div className="flex gap-3 text-sm">
+            <button
+              onClick={() => setSelectedCategory(null)}
+              className={selectedCategory === null ? "text-white" : "text-gray-600 hover:text-gray-400"}
+            >
+              all
+            </button>
+            {categories.map((category) => (
               <button
-                onClick={() => setSelectedCategory(null)}
-                className={selectedCategory === null ? "text-white" : "text-gray-600 hover:text-gray-400"}
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={selectedCategory === category ? "text-white" : "text-gray-600 hover:text-gray-400"}
               >
-                all
+                {category}
               </button>
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={selectedCategory === category ? "text-white" : "text-gray-600 hover:text-gray-400"}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+            ))}
+          </div>
+        )}
+      </div>
 
+      {/* Articles - 의미있는 글 */}
+      <section className="mb-12">
+        <h2 className="text-gray-500 mb-4">글</h2>
         <ul className="space-y-2">
-          {filteredPosts.length > 0 ? (
-            filteredPosts.map((post) => (
+          {articles.length > 0 ? (
+            articles.map((post) => (
               <li key={post._meta.fileName}>
                 <Link
                   href={post._meta.fileName}
@@ -122,6 +128,32 @@ export default function Home() {
           ) : (
             <li className="text-gray-600">
               {searchQuery || selectedCategory ? "검색 결과 없음" : "글 준비 중"}
+            </li>
+          )}
+        </ul>
+      </section>
+
+      {/* Essays - Musings */}
+      <section>
+        <h2 className="text-gray-500 mb-4">뻘글</h2>
+        <ul className="space-y-2">
+          {essays.length > 0 ? (
+            essays.map((post) => (
+              <li key={post._meta.fileName}>
+                <Link
+                  href={post._meta.fileName}
+                  className="text-gray-300 hover:text-white"
+                >
+                  {post.title}
+                </Link>
+                <span className="text-gray-600 text-sm ml-2">
+                  {post.category} · {post.formattedDate}
+                </span>
+              </li>
+            ))
+          ) : (
+            <li className="text-gray-600">
+              {searchQuery || selectedCategory ? "검색 결과 없음" : "musings 준비 중"}
             </li>
           )}
         </ul>
