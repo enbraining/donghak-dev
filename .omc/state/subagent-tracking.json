@@ -8,10 +8,19 @@
       "status": "failed",
       "completed_at": "2026-02-03T14:01:27.292Z",
       "duration_ms": 95785
+    },
+    {
+      "agent_id": "abfecae",
+      "agent_type": "oh-my-claudecode:explore",
+      "started_at": "2026-02-04T13:20:52.626Z",
+      "parent_mode": "ultrawork",
+      "status": "failed",
+      "completed_at": "2026-02-04T13:22:45.272Z",
+      "duration_ms": 112646
     }
   ],
-  "total_spawned": 1,
+  "total_spawned": 2,
   "total_completed": 0,
-  "total_failed": 1,
-  "last_updated": "2026-02-03T14:12:18.936Z"
+  "total_failed": 2,
+  "last_updated": "2026-02-04T13:22:45.273Z"
 }
