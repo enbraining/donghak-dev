@@ -1,7 +1,7 @@
 import { allPosts } from "content-collections";
 
 export async function GET() {
-  const siteUrl = "https://donghak.dev";
+  const siteUrl = "https://www.donghak.dev";
   const sortedPosts = [...allPosts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
