@@ -16,7 +16,7 @@ const posts = defineCollection({
     description: z.string().optional(),
     tags: z.array(z.string()).optional(),
     series: z.string().optional(),
-    type: z.enum(["essay", "article"]).default("article"),
+    type: z.enum(["essay", "article", "project"]).default("article"),
   }),
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document, {
