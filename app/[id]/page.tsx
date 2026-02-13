@@ -400,7 +400,10 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
               onMouseEnter={() => { if (!mouseBlocked.current) setCursor(i); }}
               onClick={() => {
                 setCursor(i);
-                if (line.href) {
+                if (line.jumpTo !== undefined && line.jumpTo >= 0) {
+                  mouseBlocked.current = true;
+                  setCursor(line.jumpTo);
+                } else if (line.href) {
                   if (line.href.startsWith("http") || line.href.startsWith("mailto:")) {
                     window.open(line.href, "_blank");
                   } else {
