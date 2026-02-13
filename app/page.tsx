@@ -74,9 +74,9 @@ export default function Home() {
     l.push({ text: "", blank: true });
     // 이력
     l.push({ text: "# 이력" });
-    l.push({ text: "2026 ~       서울사이버대학교" });
+    l.push({ text: "2026 ~       서울사이버대학교 심리학과" });
     l.push({ text: "2025 ~       으뜸정보기술" });
-    l.push({ text: "2023 ~ 2026  광주소프트웨어마이스터고등학교" });
+    l.push({ text: "2023 ~ 2026  광주소프트웨어마이스터고등학교 스마트IoT과" });
     l.push({ text: "2017 ~ 2022  가야금" });
     l.push({ text: "", blank: true });
     // 자격증
