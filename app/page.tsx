@@ -74,8 +74,9 @@ export default function Home() {
     l.push({ text: "", blank: true });
     // 이력
     l.push({ text: "# 이력" });
-    l.push({ text: "2025 ~       서울사이버대학교 / 으뜸정보기술" });
-    l.push({ text: "2023 ~ 2025  광주소프트웨어마이스터고등학교" });
+    l.push({ text: "2026 ~       서울사이버대학교" });
+    l.push({ text: "2025 ~       으뜸정보기술" });
+    l.push({ text: "2023 ~ 2026  광주소프트웨어마이스터고등학교" });
     l.push({ text: "2017 ~ 2022  가야금" });
     l.push({ text: "", blank: true });
     // 자격증
@@ -220,7 +221,7 @@ export default function Home() {
   }, [handleKey]);
 
   return (
-    <main className="min-h-screen font-mono text-[13px] leading-[1.6] pb-12">
+    <main className="min-h-screen font-mono text-[13px] leading-[1.6] pb-12 break-words">
       {/* Search bar (hidden until / pressed) */}
       <input
         ref={searchRef}
@@ -233,7 +234,7 @@ export default function Home() {
       />
 
       {/* Lines */}
-      <div className="py-6 px-6">
+      <div className="py-6 px-4 md:px-6">
         {lines.map((line, i) => {
           const selected = cursor === i;
           return (
@@ -274,11 +275,14 @@ export default function Home() {
             {mode === "INSERT" ? `/${searchQuery}` : lines[cursor]?.text || ""}
           </span>
         </div>
-        <div className="flex items-center gap-4 text-neutral-600">
+        <div className="hidden sm:flex items-center gap-4 text-neutral-600">
           <span>j/k</span>
           <span>Enter</span>
           <span>/</span>
           <span>g/G</span>
+          <span>{lines.length > 0 ? `${cursor + 1}:${lines.length}` : "0:0"}</span>
+        </div>
+        <div className="sm:hidden text-neutral-600">
           <span>{lines.length > 0 ? `${cursor + 1}:${lines.length}` : "0:0"}</span>
         </div>
       </div>

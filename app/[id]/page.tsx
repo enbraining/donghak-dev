@@ -207,7 +207,9 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
     l.push({ text: "" });
 
     const contentStartIdx = l.length;
-    const contentLines = post.content.split("\n");
+    // Pre-process content to handle <br/> tags
+    const processedContent = post.content.replace(/<br\s*\/?>/gi, "\n");
+    const contentLines = processedContent.split("\n");
     contentLines.forEach((line) => {
       const linkMatch = line.match(/\[.+?\]\((.+?)\)/);
       l.push({ text: line, href: linkMatch ? linkMatch[1] : undefined });
@@ -363,8 +365,8 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   }
 
   return (
-    <main className="min-h-screen font-mono text-[13px] leading-[1.6] pb-12">
-      <div className="py-6 px-6">
+    <main className="min-h-screen font-mono text-[13px] leading-[1.6] pb-12 break-words whitespace-pre-wrap">
+      <div className="py-6 px-4 md:px-6">
         {lines.map((line, i) => {
           const selected = cursor === i;
           const isEmpty = line.text === "";
@@ -434,11 +436,14 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
             </span>
           )}
         </div>
-        <div className="flex items-center gap-4 text-neutral-600">
+        <div className="hidden sm:flex items-center gap-4 text-neutral-600">
           <span>j/k</span>
           <span>Enter</span>
           <span>:q</span>
           <span>g/G</span>
+          <span>{lines.length > 0 ? `${cursor + 1}:${lines.length}` : "0:0"}</span>
+        </div>
+        <div className="sm:hidden text-neutral-600">
           <span>{lines.length > 0 ? `${cursor + 1}:${lines.length}` : "0:0"}</span>
         </div>
       </div>

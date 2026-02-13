@@ -22,7 +22,7 @@ export default function ArchivePage() {
   const years = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
 
   return (
-    <main className="min-h-screen max-w-2xl mx-auto px-5 py-12">
+    <main className="min-h-screen max-w-2xl mx-auto px-4 md:px-6 py-12">
       <header className="mb-12 pb-6 border-b border-gray-800">
         <div className="flex items-center gap-2 text-gray-500 mb-4">
           <Link href="/" className="text-gray-400 hover:text-white">home</Link>
