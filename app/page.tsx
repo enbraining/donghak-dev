@@ -251,7 +251,7 @@ export default function Home() {
                   }
                 }
               }}
-              className={selected ? "bg-green-900/40 text-green-400" : "text-neutral-500"}
+              className={selected ? "bg-green-900/40 text-green-400" : "text-neutral-400"}
             >
               <span className="select-none">{selected ? "+" : " "} </span>
               {line.blank ? "\u00A0" : line.href ? <span className={selected ? "" : "text-teal-400"}>{`[[${line.text}]]`}</span> : line.text}

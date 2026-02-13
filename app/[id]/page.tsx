@@ -24,13 +24,13 @@ function styleLine(text: string, selected: boolean): React.ReactNode {
     const colors = selected
       ? ""
       : level === 1
-        ? "text-neutral-200"
+        ? "text-white font-bold"
         : level === 2
-          ? "text-neutral-300"
-          : "text-neutral-400";
+          ? "text-neutral-100"
+          : "text-neutral-200";
     return (
       <>
-        <span className={selected ? "" : "text-neutral-600"}>{headingMatch[1]} </span>
+        <span className={selected ? "" : "text-neutral-400"}>{headingMatch[1]} </span>
         <span className={colors}>{renderInline(content, selected)}</span>
       </>
     );
@@ -416,7 +416,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   }
                 }
               }}
-              className={selected ? "bg-green-900/40 text-green-400" : "text-neutral-500"}
+              className={selected ? "bg-green-900/40 text-green-400" : "text-neutral-400"}
             >
               <span className="select-none">{selected ? "+" : " "} </span>
               {content}
