@@ -93,20 +93,12 @@ function renderInline(text: string, selected: boolean): React.ReactNode {
     const linkMatch = remaining.match(/^(.*?)\[(.+?)\]\((.+?)\)(.*)/s);
 
     // find earliest match
-    let earliest: { type: string; idx: number; match: RegExpMatchArray } | null = null;
-
-    if (boldMatch && boldMatch[1] !== undefined) {
-      const idx = boldMatch[1].length;
-      if (!earliest || idx < earliest.idx) earliest = { type: "bold", idx, match: boldMatch };
-    }
-    if (codeMatch && codeMatch[1] !== undefined) {
-      const idx = codeMatch[1].length;
-      if (!earliest || idx < earliest.idx) earliest = { type: "code", idx, match: codeMatch };
-    }
-    if (linkMatch && linkMatch[1] !== undefined) {
-      const idx = linkMatch[1].length;
-      if (!earliest || idx < earliest.idx) earliest = { type: "link", idx, match: linkMatch };
-    }
+    const candidates: { type: string; idx: number; match: RegExpMatchArray }[] = [];
+    if (boldMatch && boldMatch[1] !== undefined) candidates.push({ type: "bold", idx: boldMatch[1].length, match: boldMatch });
+    if (codeMatch && codeMatch[1] !== undefined) candidates.push({ type: "code", idx: codeMatch[1].length, match: codeMatch });
+    if (linkMatch && linkMatch[1] !== undefined) candidates.push({ type: "link", idx: linkMatch[1].length, match: linkMatch });
+    candidates.sort((a, b) => a.idx - b.idx);
+    const earliest = candidates.length > 0 ? candidates[0] : null;
 
     if (!earliest) {
       parts.push(<span key={key++}>{remaining}</span>);
