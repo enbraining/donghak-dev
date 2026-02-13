@@ -423,3 +423,132 @@ body {
   box-shadow: 0 0 30px rgba(96, 165, 250, 0.4);
   transition: box-shadow 0.3s ease;
 }
+
+/* ===== Vim Prose ===== */
+.vim-prose {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #a3a3a3;
+}
+
+.vim-prose h1,
+.vim-prose h2,
+.vim-prose h3,
+.vim-prose h4 {
+  font-size: 13px;
+  font-weight: 400;
+  color: #e5e5e5;
+  margin: 1.2em 0 0.4em;
+  padding: 0;
+  border: none;
+  letter-spacing: normal;
+}
+
+.vim-prose h1::before { content: "# "; color: #525252; }
+.vim-prose h2::before { content: "## "; color: #525252; }
+.vim-prose h3::before { content: "### "; color: #525252; }
+.vim-prose h4::before { content: "#### "; color: #525252; }
+
+.vim-prose p {
+  margin-bottom: 1em;
+}
+
+.vim-prose ul,
+.vim-prose ol {
+  padding-left: 2ch;
+  margin-bottom: 1em;
+}
+
+.vim-prose li {
+  margin-bottom: 0.25em;
+  padding-left: 0;
+}
+
+.vim-prose li::marker {
+  color: #525252;
+}
+
+.vim-prose code {
+  font-family: inherit;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #f87171;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.vim-prose pre {
+  background: transparent;
+  border: 1px solid #262626;
+  border-radius: 0;
+  margin: 1em 0;
+}
+
+.vim-prose pre > code {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.vim-prose a {
+  color: #2dd4bf;
+  text-decoration: none;
+  border-bottom: none;
+  font-weight: 400;
+}
+
+.vim-prose a:hover {
+  color: #5eead4;
+  border-bottom: none;
+}
+
+.vim-prose blockquote {
+  border-left: 2px solid #525252;
+  padding: 0 0 0 2ch;
+  margin: 1em 0;
+  background: transparent;
+  border-radius: 0;
+  font-style: normal;
+  color: #737373;
+}
+
+.vim-prose hr {
+  border: none;
+  height: 0;
+  margin: 1.5em 0;
+  border-top: 1px solid #262626;
+  background: transparent;
+}
+
+.vim-prose strong {
+  color: #e5e5e5;
+  font-weight: 700;
+}
+
+.vim-prose img {
+  border-radius: 0;
+  box-shadow: none;
+  margin: 1em 0;
+}
+
+.vim-prose table {
+  font-size: 13px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.vim-prose th {
+  background: #171717;
+  border-bottom: 1px solid #262626;
+  color: #d4d4d4;
+  font-weight: 400;
+}
+
+.vim-prose td {
+  border-bottom: 1px solid #171717;
+}
+
+.vim-prose tr:hover td {
+  background: #171717;
+}

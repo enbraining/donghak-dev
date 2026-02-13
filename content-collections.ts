@@ -43,7 +43,7 @@ const posts = defineCollection({
     const formattedDate = `${dateObj.getFullYear()}년 ${String(dateObj.getMonth() + 1).padStart(2, "0")}월 ${String(dateObj.getDate()).padStart(2, "0")}일`;
 
     // 목차 추출
-    const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+    const headingRegex = /^(#{1,4})\s+(.+)$/gm;
     const headings: { level: number; text: string; id: string }[] = [];
     let match;
     while ((match = headingRegex.exec(content)) !== null) {
