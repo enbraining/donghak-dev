@@ -83,7 +83,10 @@ export default function Home() {
     l.push({ text: "# 자격증" });
     l.push({ text: "AWS Solutions Architect Associate" });
     l.push({ text: "NHN Cloud Essentials" });
-    l.push({ text: "정보처리산업기사 / 전자산업기사 / 전기기능사" });
+    l.push({ text: "정보처리산업기사" });
+    l.push({ text: "전자산업기사" });
+    l.push({ text: "전기기능사" });
+    l.push({ text: "아마추어무선기사 4급" });
     l.push({ text: "", blank: true });
     // 링크
     l.push({ text: "# 링크" });
